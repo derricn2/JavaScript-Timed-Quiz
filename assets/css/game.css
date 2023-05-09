@@ -1,0 +1,28 @@
+/* different option styling */
+.choice-container{
+    margin-bottom: 10px;
+    display: flex;
+    width: 100%;
+    font-size: 15px;
+    border: 2.5px solid darkcyan;
+    background-color: white;
+}
+
+.choice-container:hover {
+    cursor: pointer;
+    box-shadow: 0 2.5px 0 cyan;
+    transform: translateY(-5px);
+    transition: transform 150ms;
+}
+
+/* inside box styling */
+.choice-prefix {
+    padding: 15px 20px;
+    background-color: teal;
+    color: white;
+}
+
+.choice-text {
+    padding: 15px;
+}
+

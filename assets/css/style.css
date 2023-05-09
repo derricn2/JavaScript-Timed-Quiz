@@ -1,0 +1,106 @@
+:root {
+    background-color: lightblue;
+    font-size: 16px;
+}
+
+*{
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    color: black
+}
+
+
+/* content CSS */
+h1,
+h2,
+h3,
+h4 {
+    margin-bottom: 10px;
+}
+
+h1 > span {
+    font-size: 54px;
+    color: teal;
+    margin-bottom: 50px;
+}
+
+h2 {
+    font-size: 42px;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 30px;
+    font-weight: 300
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.container > * {
+    width: 100%;
+}
+
+/* set flex direction to column, no horizontal */
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* centers content */
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+/* justifies content */
+.justify-center {
+    justify-content: center;
+}
+
+/* centers text */
+.text-center {
+    text-align: center;
+}
+
+/* hide content when necessary */
+.hidden {
+    display: none;
+}
+
+/* buttons */
+.btn {
+    font-size: 18px;
+    padding: 10px 0;
+    background-color: lightgray;
+    color: teal;
+    border: 2.5px solid teal;
+    width: 150px;
+    text-align: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+    box-shadow: 0 2.5px 0 cyan;
+    transform: translateY(-5px);
+    transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+    cursor: not-allowed;
+    box-shadow: none;
+    transform:none;
+}
+
