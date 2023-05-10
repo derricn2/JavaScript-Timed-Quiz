@@ -10,7 +10,7 @@
 
 .choice-container:hover {
     cursor: pointer;
-    box-shadow: 0 2.5px 0 cyan;
+    box-shadow: 0 2.5px 0 lightseagreen;
     transform: translateY(-5px);
     transition: transform 150ms;
 }
@@ -22,7 +22,9 @@
     color: white;
 }
 
+/* width at 100% allows for the entire button to be registered when clicked */
 .choice-text {
     padding: 15px;
+    width: 100%;
 }
 
