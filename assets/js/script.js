@@ -105,8 +105,21 @@ choices.forEach(choice => {
         acceptingAnswers = false; 
         var selectedChoice = e.target;
         var selectedAnswer = selectedChoice.dataset["number"];
-        console.log(selectedAnswer);
+
+
+
+        // console logs/registers correct or incorrect answer
+        var classToApply = 'incorrect';
+        if(selectedAnswer == currentQuestion.answer){
+            classToApply = 'correct';
+        }
+
+        selectedChoice.parentElement.classList.add(classToApply);
+        // timer showing correct/incrroect answer
+        setTimeout( () => {
+        selectedChoice.parentElement.classList.remove(classToApply);
         getNewQuestion();
+        }, 1000);
     });
 });
 
