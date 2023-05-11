@@ -1,4 +1,4 @@
-// pulling questions and choices from html
+// variables connecting HTML and JS
 var question = document.getElementById("question");
 var choices = Array.from(document.getElementsByClassName('choice-text'));
 var questionCounterText = document.getElementById('questionCounter');
@@ -141,3 +141,26 @@ incrementScore = num => {
 }
 
 startGame();
+
+// quiz timer
+var timer =10;
+var quizTimeInSeconds = timer * 60 * 60;
+var quizTime = quizTimeInSeconds / 60;
+
+var counting = document.getElementById("timer");
+
+function startCountdown() {
+    let quizTimer = setInterval(function() {
+        if (timer <= 0) {
+            localStorage.setItem('mostRecentScore', score);
+            return window.location.assign("./end.html");
+        } else {
+            quizTime--;
+            let sec = Math.floor(quizTime % 60);
+            let min = Math.floor(quizTime / 60) % 60;
+            counting.innerHTML = `${sec}`;
+        }
+    }, 1000);
+}
+
+startCountdown();
