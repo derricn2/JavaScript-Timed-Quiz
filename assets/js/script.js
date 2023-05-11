@@ -1,6 +1,8 @@
 // pulling questions and choices from html
 var question = document.getElementById("question");
 var choices = Array.from(document.getElementsByClassName('choice-text'));
+var questionCounterText = document.getElementById('questionCounter');
+var scoreText = document.getElementById('score');
 
 var currentQuestion = {};
 var acceptingAnswers = false;
@@ -80,7 +82,11 @@ getNewQuestion = () => {
         if(availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS){
             return window.location.assign("./end.html");
         }
+
     questionCounter++;
+        // counts/keeps track of question #
+        questionCounterText.innerText = questionCounter + "/" + MAX_QUESTIONS;
+
     var questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
     question.innerText = currentQuestion.question;
@@ -114,6 +120,11 @@ choices.forEach(choice => {
             classToApply = 'correct';
         }
 
+        // keeps track of score for every correct/incorrect choice made
+        if(classToApply === 'correct'){
+            incrementScore(CORRECT_BONUS);
+        }
+
         selectedChoice.parentElement.classList.add(classToApply);
         // timer showing correct/incrroect answer
         setTimeout( () => {
@@ -122,5 +133,10 @@ choices.forEach(choice => {
         }, 1000);
     });
 });
+
+incrementScore = num => {
+    score +=num;
+    scoreText.innerText = score;
+}
 
 startGame();
