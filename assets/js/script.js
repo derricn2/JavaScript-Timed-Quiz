@@ -3,6 +3,36 @@ var question = document.getElementById("question");
 var choices = Array.from(document.getElementsByClassName('choice-text'));
 var questionCounterText = document.getElementById('questionCounter');
 var scoreText = document.getElementById('score');
+// initiatilize countdown
+var countdown = 60;
+
+
+// function to update timer
+function updateTimer() {
+    document.getElementById("timer").innerHTML = countdown;
+}
+
+function startTimer() {
+    updateTimer();
+
+
+    var interval = setInterval(function() {
+        countdown -= 1;
+
+
+        updateTimer();
+        if (countdown <= 0) {
+            clearInterval(interval);
+    
+            localStorage.setItem('mostRecentScore', score);
+            return window.location.assign("./end.html");
+            
+        }
+    }, 1000);
+};
+
+
+startTimer();
 
 var currentQuestion = {};
 var acceptingAnswers = false;
@@ -119,6 +149,8 @@ choices.forEach(choice => {
         var classToApply = 'incorrect';
         if(selectedAnswer == currentQuestion.answer){
             classToApply = 'correct';
+        } else {
+            handleIncorrectAnswer();
         }
 
         // keeps track of score for every correct/incorrect choice made
@@ -132,8 +164,14 @@ choices.forEach(choice => {
         selectedChoice.parentElement.classList.remove(classToApply);
         getNewQuestion();
         }, 1000);
-    });
+    },);
 });
+
+
+function handleIncorrectAnswer() {
+    countdown -= 5;
+    updateTimer();
+}
 
 incrementScore = num => {
     score +=num;
@@ -141,26 +179,3 @@ incrementScore = num => {
 }
 
 startGame();
-
-// quiz timer
-var timer =10;
-var quizTimeInSeconds = timer * 60 * 60;
-var quizTime = quizTimeInSeconds / 60;
-
-var counting = document.getElementById("timer");
-
-function startCountdown() {
-    let quizTimer = setInterval(function() {
-        if (timer <= 0) {
-            localStorage.setItem('mostRecentScore', score);
-            return window.location.assign("./end.html");
-        } else {
-            quizTime--;
-            let sec = Math.floor(quizTime % 60);
-            let min = Math.floor(quizTime / 60) % 60;
-            counting.innerHTML = `${sec}`;
-        }
-    }, 1000);
-}
-
-startCountdown();
